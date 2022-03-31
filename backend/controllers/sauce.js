@@ -1,4 +1,5 @@
 /* Import des modules necessaires */
+const sauce = require("../models/sauce");
 const Sauce = require("../models/sauce");
 
 
@@ -55,10 +56,19 @@ exports.getOneSauce = (req, res, next) => {
 };
 
 /* Controleur modification sauce */
-exports.modifySauce = (req, res, next) => { };
+exports.modifySauce = (req, res, next) => { }
 
 /* Controleur suppression sauce */
-exports.deleteSauce = (req, res, next) => { };
+exports.deleteSauce = (req, res, next) => {
+    const id = req.params.id;
+    Sauce.findByIdAndDelete(id)
+        .then((sauce) => { res.status(200).json(sauce); })
+        .catch((error) => {
+            res.status(500).json({
+                error: error,
+            });
+        });
+};
 
 /* Controleur like dislike */
 exports.likeDislikeSauce = (req, res, next) => { };
