@@ -2,7 +2,7 @@
 
 const Sauce = require("../models/sauce");
 const fs = require('fs');
-const sauce = require("../models/sauce");
+
 
 
 /* Controleur creation sauce */
@@ -119,7 +119,7 @@ exports.deleteSauce = (req, res, next) => {
 /* Controleur like dislike */
 // Regle likeDislikeSauce : Like = 1 _ Dislike = -1 _ Pas de vote = 0
 exports.likeDislikeSauce = (req, res, next) => {
-    sauce.findOne({ _id: req.params.id })
+    Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
             console.log(sauce)
 
